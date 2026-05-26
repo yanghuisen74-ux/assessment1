@@ -18,15 +18,24 @@ assessmentButton.addEventListener( //イベント検知設定の追加
       tweetDivision.removeChild(tweetDivision.firstChild)
     }
   */
-    const header = document.createElement('h3'); // h3タグの作成
-    header.innerText = '診断結果'; // タグの内側のテキストを設定
-    resultDivision.appendChild(header); // divタグの子要素として追加
+    const headerDivision = document.createElement('div'); // divタグの作成
+    headerDivision.setAttribute('class', 'card-header text-bg-primary')
+    headerDivision.innerText = '診断結果'; // タグの内側のテキストを設定
+    resultDivision.appendChild(headerDivision); // divタグの子要素として追加
   
+    //bodyDivisionの作成
+    const bodyDivision = document.createElement('div')//divタグの作成
+    bodyDivision.setAttribute('class', 'card-body')// bootstrap用のclass設定
     const paragraph = document.createElement('p'); // pタグの作成
+    paragraph.setAttribute('class', 'card-text')//class設定
     const result = assessment(userName); // 診断結果を作成
     paragraph.innerText = result; // pタグの内側のテキストを設定
-    resultDivision.appendChild(paragraph); // divタグの子要素として追加
+    bodyDivision.appendChild(paragraph)
+    resultDivision.appendChild(bodyDivision); // divタグの子要素として追加
     
+//resultDivisionにもBootstrapのスタイルを適用する
+resultDivision.setAttribute('class', 'card')
+
     //X投稿ボタンの作成
     tweetDivision.innerText = ''; // Tweetのdivタグも空にする
     const anchor = document.createElement('a')//aタグの作成
